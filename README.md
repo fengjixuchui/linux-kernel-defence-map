@@ -20,11 +20,23 @@ Rather, each connection represents some kind of relationship.
 So this map should help to navigate the documentation and Linux kernel sources.
 It also provides the Common Weakness Enumeration (CWE) numbers for vulnerability classes.
 
+## How this Map is made
+
 This map is written in the DOT language, which makes maintenance and updating in Git very convenient.
 The diagram is generated using GraphViz with the following command:
 ```
-dot -Tpng linux-kernel-defence-map.dot -o linux-kernel-defence-map.png
+dot -Tsvg linux-kernel-defence-map.dot -o linux-kernel-defence-map.svg
 ```
+
+## Do you want to check your kernel config?
+
+So there are plenty of Linux kernel hardening config options. A lot of them are
+not enabled by the major distros. We have to enable these options ourselves to
+make our systems more secure.
+
+But nobody likes verifying configs manually. So I've created the [__kconfig-hardened-check.py__][1]
+that checks security hardening options in the Linux kernel Kconfig option list.
+You are welcome to try it.
 
 ## Documentation
 
@@ -48,7 +60,12 @@ dot -Tpng linux-kernel-defence-map.dot -o linux-kernel-defence-map.png
 
   https://github.com/Microsoft/MSRC-Security-Research/tree/master/presentations/2019_02_BlueHatIL
 
-## The Map for v5.0
+- Linux Kernel Runtime Guard (LKRG) threat model:
 
-![Linux Kernel Defence Map](./linux-kernel-defence-map.png)
+  https://openwall.info/wiki/p_lkrg/Threat_model
 
+## The Map for v5.1
+
+![Linux Kernel Defence Map](./linux-kernel-defence-map.svg)
+
+[1]: https://github.com/a13xp0p0v/kconfig-hardened-check
